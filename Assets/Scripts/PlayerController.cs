@@ -40,10 +40,6 @@ public class PlayerController : MonoBehaviour
             _playerRigidbody.AddForce(transform.forward * _friction, ForceMode.Force);
         }
         transform.Translate(_playerMovementInput * _speed * Time.deltaTime, Space.World);
-        //if(_playerMovementInput == Vector3.zero)
-        //{
-        //    _playerRigidbody.AddForce(10f,0f,0f, ForceMode.Force);
-        //}
 
 
         if(Input.GetKeyDown(KeyCode.Space))

@@ -19,6 +19,9 @@ public class ObstacleController : MonoBehaviour
     [SerializeField]
     private LayerMask _floorMask;
 
+    [SerializeField]
+    private float _friction;
+
     private bool _isGround;
 
     private void Start()
