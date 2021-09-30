@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask _floorMask;
 
+    [SerializeField]
+    private float _friction;
+
     // Update is called once per frame
     void Update()
     {
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
         if(_playerMovementInput.x != 0 || _playerMovementInput.z != 0)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerMovementInput), 0.2f);
+            _playerRigidbody.AddForce(transform.forward * _friction, ForceMode.Force);
         }
         transform.Translate(_playerMovementInput * _speed * Time.deltaTime, Space.World);
         //if(_playerMovementInput == Vector3.zero)
