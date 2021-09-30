@@ -37,6 +37,7 @@ public class ObstacleController : MonoBehaviour
             //_speed += _acceleration;
             _rb.velocity = transform.forward * _speed;
             _rb.velocity = _speed * _rb.velocity.normalized;
+            //_isGround = true;
         }
     }
 
@@ -47,10 +48,12 @@ public class ObstacleController : MonoBehaviour
             Debug.Log($"COLLISION");
             //transform.forward = new Vector3(Random.Range(-1,1), 0f, 0f);
             transform.rotation = Quaternion.LookRotation(new Vector3(Random.Range(-1f,1f),0f,Random.Range(-1f,1f)));
-            _rb.velocity = _speed * _rb.velocity.normalized;
+            //_rb.velocity = transform.forward * _speed;
+            //_rb.velocity = _speed * _rb.velocity.normalized;
             //_speed += _acceleration;
             //_rb.velocity = new Vector3(Random.Range(-5f,5f), 0f, 0f) * _speed;
             //_rb.velocity = -transform.forward * _speed;
         }
+        
     }
 }
