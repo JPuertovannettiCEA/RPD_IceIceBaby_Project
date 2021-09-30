@@ -44,7 +44,7 @@ public class CollisionBehaviour : MonoBehaviour
                 obstacle.transform.rotation = Quaternion.LookRotation(new Vector3(Random.Range(-1f,1f),0f,Random.Range(-1f,1f)));
                 //obstacle.GetComponent<Rigidbody>().velocity = 3f * obstacle.GetComponent<Rigidbody>().velocity.normalized;
                 //_rb.velocity = _speed * _rb.velocity.normalized;
-                //obstacle.GetComponent<Rigidbody>().AddForce(-obstacle.transform.forward * 10f, ForceMode.Force);
+                //obstacle.GetComponent<Rigidbody>().AddForce(-obstacle.transform.forward * 15f, ForceMode.Force);
                 //obstacle.transform.rotation = Quaternion.LookRotation(new Vector3(-obstacle.transform.forward.x,0f,-obstacle.transform.forward.z));
             }
         }
