@@ -31,8 +31,15 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerMovementInput), 0.2f);
+        if(_playerMovementInput.x != 0 || _playerMovementInput.z != 0)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerMovementInput), 0.2f);
+        }
         transform.Translate(_playerMovementInput * _speed * Time.deltaTime, Space.World);
+        //if(_playerMovementInput == Vector3.zero)
+        //{
+        //    _playerRigidbody.AddForce(10f,0f,0f, ForceMode.Force);
+        //}
 
 
         if(Input.GetKeyDown(KeyCode.Space))

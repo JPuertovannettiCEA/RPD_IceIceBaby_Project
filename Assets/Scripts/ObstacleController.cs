@@ -7,14 +7,44 @@ public class ObstacleController : MonoBehaviour
     [SerializeField]
     private Rigidbody _rb;
 
-    private void Update()
+    [SerializeField]
+    private float _speed;
+
+    [SerializeField]
+    private float _acceleration;
+
+    [SerializeField]
+    private Transform _groundCheck;
+
+    [SerializeField]
+    private LayerMask _floorMask;
+
+    private bool _isGround;
+
+    private void Start()
     {
-        _rb.AddTorque(transform.forward * 2f, ForceMode.VelocityChange);
+        _isGround = false;
+        //_rb.velocity = -transform.forward * _speed;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void Update()
     {
-        Debug.Log($"COLLISION");
-        _rb.AddTorque(transform.forward * 5f, ForceMode.VelocityChange);
+        //if(Physics.CheckSphere(_groundCheck.position, 0.1f, _floorMask) && _isGround == false)
+        //{
+        //    _speed += _acceleration;
+        //    _rb.velocity = transform.forward * _speed;
+        //    _isGround = true;
+        //}
     }
+
+    /**private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.layer != 6)
+        {
+            Debug.Log($"COLLISION");
+            _speed += _acceleration;
+            _rb.velocity = new Vector3(Random.Range(-5f,5f), 0f, 0f) * _speed;
+            //_rb.velocity = -transform.forward * _speed;
+        }
+    }**/
 }
