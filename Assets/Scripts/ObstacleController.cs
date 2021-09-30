@@ -27,16 +27,16 @@ public class ObstacleController : MonoBehaviour
     private void Start()
     {
         _isGround = false;
-        _rb.velocity = transform.forward * _speed;
+        //_rb.velocity = transform.forward * _speed;
     }
 
     private void Update()
     {
         if(Physics.CheckSphere(_groundCheck.position, 0.1f, _floorMask) && _isGround == false)
         {
-            _speed += _acceleration;
+            //_speed += _acceleration;
             _rb.velocity = transform.forward * _speed;
-            _isGround = true;
+            _rb.velocity = _speed * _rb.velocity.normalized;
         }
     }
 
@@ -45,8 +45,10 @@ public class ObstacleController : MonoBehaviour
         if(other.gameObject.CompareTag("Collider"))
         {
             Debug.Log($"COLLISION");
-            _speed += _acceleration;
-            _rb.velocity = new Vector3(Random.Range(-5f,5f), 0f, 0f) * _speed;
+            transform.forward = -transform.forward;
+            _rb.velocity = _speed * _rb.velocity.normalized;
+            //_speed += _acceleration;
+            //_rb.velocity = new Vector3(Random.Range(-5f,5f), 0f, 0f) * _speed;
             //_rb.velocity = -transform.forward * _speed;
         }
     }
