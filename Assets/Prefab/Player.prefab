@@ -1650,13 +1650,16 @@ MonoBehaviour:
   _playerRigidbody: {fileID: 4567071089667048615}
   _playerAnim: {fileID: 8590122705727370804}
   _speed: 5
-  _jumpForce: 7
+  _jumpForce: 6
   _groundCheck: {fileID: 4567071088165209574}
   _floorMask:
     serializedVersion: 2
     m_Bits: 64
-  _friction: 2
+  _friction: 4
   _scoreText: {fileID: 0}
+  _sfxGetFish: {fileID: 0}
+  _sfxHurt: {fileID: 0}
+  _sfxHop: {fileID: 0}
 --- !u!1 &4744845985405339888
 GameObject:
   m_ObjectHideFlags: 0

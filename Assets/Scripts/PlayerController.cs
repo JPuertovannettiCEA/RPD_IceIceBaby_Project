@@ -46,11 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        //_friction = 4f;
         _score = 0;
         _scoreText.text = _score.ToString();
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         _playerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
