@@ -42,13 +42,13 @@ public class FinalScore : MonoBehaviour
 
     private IEnumerator WaitForPlayAgainLoad()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }
 
     private IEnumerator WaitForReturnLoad()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(0);
     }
 
