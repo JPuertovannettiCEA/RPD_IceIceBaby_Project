@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
 
         if(timer <= 0f)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _playerRigidbody;
+
+    [SerializeField]
+    private Animator _playerAnim;
 
     [SerializeField]
     private float _speed;
@@ -34,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _score = 0;
-        _scoreText.text = "Score: " + _score.ToString();
+        _scoreText.text = _score.ToString();
     }
     // Update is called once per frame
     void Update()
@@ -42,6 +46,7 @@ public class PlayerController : MonoBehaviour
         _playerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
         MovePlayer();
+        UpdateAnimations();
     }
 
     private void MovePlayer()
@@ -50,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerMovementInput), 0.2f);
             _playerRigidbody.AddForce(transform.forward * _friction, ForceMode.Force);
+            //UpdateAnimations();
         }
         transform.Translate(_playerMovementInput * _speed * Time.deltaTime, Space.World);
 
@@ -63,13 +69,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void UpdateAnimations()
+    {
+        _playerAnim.SetFloat("MoveX", _playerMovementInput.x);
+        _playerAnim.SetFloat("MoveY", _playerMovementInput.z);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Fish"))
         {
             _score++;
-            _scoreText.text = "Score: " + _score.ToString();
+            _scoreText.text = _score.ToString();
             Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.CompareTag("Obstacle"))
+        {
+            SceneManager.LoadScene(2);
         }
     }
 
