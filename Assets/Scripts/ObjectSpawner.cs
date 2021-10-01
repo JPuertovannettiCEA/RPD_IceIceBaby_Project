@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    //[SerializeField]
     private Vector3 _spawnOffset;
 
     [SerializeField]
@@ -15,7 +14,6 @@ public class ObjectSpawner : MonoBehaviour
 
     private float counter = 0f;
     private float counterFish = 0f;
-    private bool _fishOn = false;
 
     private void Update()
     {

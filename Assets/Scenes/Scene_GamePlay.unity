@@ -4561,7 +4561,7 @@ PrefabInstance:
       objectReference: {fileID: 1387372491}
     - target: {fileID: 4567071089667048613, guid: a872715d92b48314aac39ddfe70ebd92, type: 3}
       propertyPath: _friction
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4567071089667048613, guid: a872715d92b48314aac39ddfe70ebd92, type: 3}
       propertyPath: _jumpForce
