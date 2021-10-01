@@ -23,6 +23,7 @@ public class Menu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PauseMenuUI._isPaused = false;
         Time.timeScale = 1f;
     }
 

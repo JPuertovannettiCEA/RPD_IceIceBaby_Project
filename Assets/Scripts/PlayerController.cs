@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioSource _sfxHop;
 
+    //private bool _canJump;
+
     private void Start()
     {
         //_friction = 4f;
@@ -59,6 +61,15 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
             UpdateAnimations();
+            
+        }
+    }
+
+    private void Update()
+    {
+        if(PauseMenuUI._isPaused == false)
+        {
+            JumpPlayer();
         }
     }
 
@@ -68,18 +79,21 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_playerMovementInput), 0.2f);
             _playerRigidbody.AddForce(transform.forward * _friction, ForceMode.Force);
-            //UpdateAnimations();
         }
         transform.Translate(_playerMovementInput * _speed * Time.deltaTime, Space.World);
+    }
 
-
+    private void JumpPlayer()
+    {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            //Debug.Log($"JUMP");
             if(Physics.CheckSphere(_groundCheck.position, 0.1f, _floorMask))
             {
+                Debug.Log("ISJUMPING");
                 _sfxHop.Play();
                 _playerAnim.SetBool("Jump", true);
-                _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+                _playerRigidbody.AddForce(Vector3.up * _jumpForce , ForceMode.Impulse);
             } 
             else
             {
