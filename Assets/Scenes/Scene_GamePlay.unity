@@ -716,9 +716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'EXIT
-
-'
+  m_text: BACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d6a477e0e709994e91abe9ad79125f4, type: 2}
   m_sharedMaterial: {fileID: -8068608799700065402, guid: 2d6a477e0e709994e91abe9ad79125f4, type: 2}

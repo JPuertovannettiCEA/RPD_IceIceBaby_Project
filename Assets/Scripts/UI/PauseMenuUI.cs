@@ -16,7 +16,7 @@ public class PauseMenuUI : MonoBehaviour
     public GameObject exitTopButton;
     public EventSystem _eventSystem;
 
-    private bool _isPaused;
+    public static bool _isPaused;
 
     private void OnEnable()
     {
@@ -40,6 +40,7 @@ public class PauseMenuUI : MonoBehaviour
     public void OnContinuePressed()
     {
         _gameplayUI.gameObject.SetActive(true);
+        _isPaused = false;
         gameObject.SetActive(false);
     }
 

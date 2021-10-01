@@ -54,8 +54,11 @@ public class PlayerController : MonoBehaviour
     {
         _playerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
-        MovePlayer();
-        UpdateAnimations();
+        if(PauseMenuUI._isPaused == false)
+        {
+            MovePlayer();
+            UpdateAnimations();
+        }
     }
 
     private void MovePlayer()
