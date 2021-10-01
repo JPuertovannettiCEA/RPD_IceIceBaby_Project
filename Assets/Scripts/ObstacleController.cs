@@ -22,10 +22,14 @@ public class ObstacleController : MonoBehaviour
     //[SerializeField]
     //private float _friction;
 
+    [SerializeField]
+    private AudioSource _sfxBounce;
+
     private bool _isGround;
 
     private void Start()
     {
+        _sfxBounce = GameObject.FindGameObjectWithTag("SFX").GetComponent<AudioSource>();
         _isGround = false;
     }
 
@@ -42,7 +46,8 @@ public class ObstacleController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Collider") || other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log($"COLLISION");
+            //Debug.Log($"COLLISION");
+            _sfxBounce.Play();
             Vector3 dir = other.contacts[0].point - transform.position;
             dir = -dir.normalized;
             transform.rotation = Quaternion.LookRotation(new Vector3(dir.x,0f,dir.z));

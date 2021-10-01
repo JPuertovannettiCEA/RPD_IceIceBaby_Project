@@ -249,6 +249,7 @@ MonoBehaviour:
   _floorMask:
     serializedVersion: 2
     m_Bits: 64
+  _sfxBounce: {fileID: 3512402107869858739, guid: 1b98021f135a2cb4a97bab05d43d59ea, type: 3}
 --- !u!82 &1514083164618586191
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ TagManager:
   - Start
   - Credits
   - Exit
+  - SFX
   layers:
   - Default
   - TransparentFX
