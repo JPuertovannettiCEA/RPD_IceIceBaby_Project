@@ -9,11 +9,15 @@ public class Menu : MonoBehaviour
     public GameObject startButton;
     public GameObject creditsButton;
     public GameObject exitButton;
+    public GameObject instructionsButton;
     public GameObject exitTopButton;
     public EventSystem _eventSystem;
 
     [SerializeField]
     private GameObject _credits;
+
+    [SerializeField]
+    private GameObject _instructions;
 
 
     public void StartPressed()
@@ -27,6 +31,7 @@ public class Menu : MonoBehaviour
         startButton.SetActive(false);
         creditsButton.SetActive(false);
         exitButton.SetActive(false);
+        instructionsButton.SetActive(false);
         exitTopButton.SetActive(true);
         _eventSystem.SetSelectedGameObject(exitTopButton);
     }
@@ -34,11 +39,24 @@ public class Menu : MonoBehaviour
     public void ExitTopPressed()
     {
         _credits.SetActive(false);
+        _instructions.SetActive(false);
         startButton.gameObject.SetActive(true);
         creditsButton.gameObject.SetActive(true);
         exitButton.gameObject.SetActive(true);
+        instructionsButton.SetActive(true);
         exitTopButton.SetActive(false);
-        _eventSystem.SetSelectedGameObject(creditsButton);
+        _eventSystem.SetSelectedGameObject(startButton);
+    }
+
+    public void InstructionsPressed()
+    {
+        _instructions.SetActive(true);
+        startButton.SetActive(false);
+        creditsButton.SetActive(false);
+        exitButton.SetActive(false);
+        instructionsButton.SetActive(false);
+        exitTopButton.SetActive(true);
+        _eventSystem.SetSelectedGameObject(exitTopButton);
     }
 
     public void ExitPressed()
