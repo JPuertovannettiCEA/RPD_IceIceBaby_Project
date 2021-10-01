@@ -35,8 +35,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private TMP_Text _scoreText;
 
+    [SerializeField]
+    private AudioSource _sfxGetFish;
 
+    [SerializeField]
+    private AudioSource _sfxHurt;
 
+    [SerializeField]
+    private AudioSource _sfxHop;
 
     private void Start()
     {
@@ -67,7 +73,13 @@ public class PlayerController : MonoBehaviour
         {
             if(Physics.CheckSphere(_groundCheck.position, 0.1f, _floorMask))
             {
+                _sfxHop.Play();
+                _playerAnim.SetBool("Jump", true);
                 _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            } 
+            else
+            {
+                _playerAnim.SetBool("Jump", false);
             }
         }
     }
@@ -82,6 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Fish"))
         {
+            _sfxGetFish.Play();
             _score++;
             _scoreText.text = _score.ToString();
             Destroy(other.gameObject);
@@ -93,6 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Obstacle"))
         {
+            _sfxHurt.Play();
             _win = false;
             SceneManager.LoadScene(2);
         }
