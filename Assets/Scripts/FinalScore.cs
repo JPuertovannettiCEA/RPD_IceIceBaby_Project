@@ -32,12 +32,12 @@ public class FinalScore : MonoBehaviour
 
     public void LoadPlayAgainPressed()
     {
-        WaitForPlayAgainLoad();
+        StartCoroutine(WaitForPlayAgainLoad());
     }
 
     public void ReturnPressed()
     {
-        WaitForReturnLoad();
+        StartCoroutine(WaitForReturnLoad());
     }
 
     private IEnumerator WaitForPlayAgainLoad()
