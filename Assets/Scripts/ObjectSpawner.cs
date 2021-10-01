@@ -13,31 +13,36 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField]
     private GameObject _fish;
 
-    private float _timeBetweenSpawns = 1f;
-    private float _timeNextSpawn;
-    
-    private void Start()
-    {
-        _timeNextSpawn = Timer.timer - _timeBetweenSpawns;
-    }
+    private float counter = 0f;
+    private bool _fishOn = false;
 
     private void Update()
     {
-        _spawnOffset = new Vector3(Random.Range(-10f,10f), 0f, Random.Range(-10f,10f));
-        //This condition is to indicate when there will be a spawn happening
-        if (_timeNextSpawn > Timer.timer) //Spawn Condition
+        counter += Time.deltaTime;
+        _spawnOffset = new Vector3(Random.Range(-1f,1f), 0f, Random.Range(-1f,1f));
+        if(counter >= 5f && _fishOn == false) //Fish 
+        {
+            SpawnObjects(_fish);
+            _fishOn = true;
+        }
+        if (counter >= 10f) //Spikey Cubes
         {
             SpawnObjects(_obstacle);
-            _timeNextSpawn = Timer.timer - _timeBetweenSpawns;
-            //Debug.Log("Somethin happens here");
-            //Instantiate(objectwhatever, position, Quaternion.identity);
+            counter = 0f;
+            _fishOn = false;
         }
     }
 
     public void SpawnObjects(GameObject prefab)
     {
-        Instantiate(prefab, transform.position + _spawnOffset, transform.rotation);
-        //_timeBetweenSpawns = 10f;
+        if(prefab == _fish)
+        {
+            Instantiate(prefab, transform.position + _spawnOffset, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(prefab, transform.position + _spawnOffset, transform.rotation);
+        }
     }
 
 }

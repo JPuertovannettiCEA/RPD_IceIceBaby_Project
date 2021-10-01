@@ -14,28 +14,15 @@ public class Timer : MonoBehaviour
  
     #endregion
 
-    //This variable is for when the spiky cubes spawns
-    //private float _timeBetweenSpawns = 20f; //Seconds
-
-    // Start is called before the first frame update
     void Start()
     {
         timer = 60f;
         _timerText.text = timer.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-
-        //This condition is to indicate when there will be a spawn happening
-        //if (timer % _timeBetweenSpawns > 1) //Spawn Condition
-        //{
-        //    _timeBetweenSpawns = 0f;
-            //Debug.Log("Somethin happens here");
-            //Instantiate(objectwhatever, position, Quaternion.identity);
-       //}
 
         DisplayTime(timer);
 
