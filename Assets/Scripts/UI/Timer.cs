@@ -46,6 +46,7 @@ public class Timer : MonoBehaviour
 
         if(timer <= 0f)
         {
+            PlayerController._win = true;
             SceneManager.LoadScene(2);
         }
     }

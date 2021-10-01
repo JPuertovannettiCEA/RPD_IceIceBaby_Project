@@ -2,19 +2,49 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
 using System;
+using TMPro;
 
 public class ChangeScene : MonoBehaviour
 {
     private int _sceneBuildIndex;
+
+    [SerializeField]
+    private GameObject _Text;
+    
+    [SerializeField]
+    private GameObject _credits;
 
     private void Start()
     {
         _sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
-    public void LoadScene()
+    private void Update()
     {
-        StartCoroutine(WaitForSceneLoad());
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            LoadScene(_Text);
+        }
+    }
+
+    public void LoadScene(GameObject _button)
+    {
+        if(_button.gameObject.CompareTag("Credits"))
+        {
+            _credits.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                _credits.SetActive(false);
+            }
+        }
+        if(_button.gameObject.CompareTag("Exit"))
+        {
+            OnExitPressed();
+        }
+        if(_button.gameObject.CompareTag("Start"))
+        {
+            StartCoroutine(WaitForSceneLoad());
+        }
     }
 
     private IEnumerator WaitForSceneLoad()

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public static int _score;
+    public static bool _win;
 
     private Vector3 _playerMovementInput;
 
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private TMP_Text _scoreText;
+
+
 
 
     private void Start()
@@ -84,8 +87,13 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
         if(other.gameObject.CompareTag("Obstacle"))
         {
+            _win = false;
             SceneManager.LoadScene(2);
         }
     }
