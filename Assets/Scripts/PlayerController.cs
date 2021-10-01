@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public static int _score;
+
     private Vector3 _playerMovementInput;
 
     [SerializeField]
@@ -24,6 +27,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _friction;
 
+    [SerializeField]
+    private TMP_Text _scoreText;
+
+
+    private void Start()
+    {
+        _score = 0;
+        _scoreText.text = "Score: " + _score.ToString();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -48,6 +60,16 @@ public class PlayerController : MonoBehaviour
             {
                 _playerRigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Fish"))
+        {
+            _score++;
+            _scoreText.text = "Score: " + _score.ToString();
+            Destroy(other.gameObject);
         }
     }
 

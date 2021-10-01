@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     #region Timer Variables
     [SerializeField]
-    public float timer;
+    public static float timer;
 
     [SerializeField]
     private TMP_Text _timerText;
@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     #endregion
 
     //This variable is for when the spiky cubes spawns
-    private float _timeBetweenSpawns = 20f; //Seconds
+    //private float _timeBetweenSpawns = 20f; //Seconds
 
     // Start is called before the first frame update
     void Start()
@@ -30,12 +30,12 @@ public class Timer : MonoBehaviour
         timer -= Time.deltaTime;
 
         //This condition is to indicate when there will be a spawn happening
-        if (timer % _timeBetweenSpawns > 1) //Spawn Condition
-        {
-            _timeBetweenSpawns = 0f;
+        //if (timer % _timeBetweenSpawns > 1) //Spawn Condition
+        //{
+        //    _timeBetweenSpawns = 0f;
             //Debug.Log("Somethin happens here");
             //Instantiate(objectwhatever, position, Quaternion.identity);
-        }
+       //}
 
         DisplayTime(timer);
 

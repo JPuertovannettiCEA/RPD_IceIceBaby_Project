@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collider
   - Obstacle
+  - Fish
   layers:
   - Default
   - TransparentFX
