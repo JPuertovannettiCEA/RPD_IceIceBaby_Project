@@ -19,6 +19,11 @@ public class Menu : MonoBehaviour
     [SerializeField]
     private GameObject _instructions;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
 
     public void StartPressed()
     {
