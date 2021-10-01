@@ -9,20 +9,12 @@ public class Menu : MonoBehaviour
     public GameObject startButton;
     public GameObject creditsButton;
     public GameObject exitButton;
+    public GameObject exitTopButton;
+    public EventSystem _eventSystem;
 
     [SerializeField]
     private GameObject _credits;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     public void StartPressed()
     {
@@ -32,10 +24,21 @@ public class Menu : MonoBehaviour
     public void CreditsPressed()
     {
         _credits.SetActive(true);
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            _credits.SetActive(false);
-        }
+        startButton.SetActive(false);
+        creditsButton.SetActive(false);
+        exitButton.SetActive(false);
+        exitTopButton.SetActive(true);
+        _eventSystem.SetSelectedGameObject(exitTopButton);
+    }
+
+    public void ExitTopPressed()
+    {
+        _credits.SetActive(false);
+        startButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
+        exitButton.gameObject.SetActive(true);
+        exitTopButton.SetActive(false);
+        _eventSystem.SetSelectedGameObject(creditsButton);
     }
 
     public void ExitPressed()

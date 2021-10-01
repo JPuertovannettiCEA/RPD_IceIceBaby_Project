@@ -6,6 +6,9 @@ public class PauseMenuUI : MonoBehaviour
     [SerializeField]
     private GameplayUI _gameplayUI;
 
+    [SerializeField]
+    private GameObject _instructions;
+
     private void OnEnable()
     {
         Time.timeScale = 0f;
@@ -15,6 +18,11 @@ public class PauseMenuUI : MonoBehaviour
     {
         _gameplayUI.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void OnInstructionsPressed()
+    {
+        _instructions.SetActive(true);
     }
 
     public void OnQuitPressed()
